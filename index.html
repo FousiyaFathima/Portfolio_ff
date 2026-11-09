@@ -500,7 +500,41 @@ video {
     font-size: 11px;
   }
 }
+/* Keep the complete desktop constellation visible on mobile */
+#skills,
+#cons {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
 
+#cons {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#stage {
+  transform-origin: top left;
+}
+
+@media (max-width: 600px) {
+  #skills .c {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  #skills .lead {
+    font-size: 12px;
+  }
+
+  #skills .legend {
+    gap: 8px;
+    font-size: 11px;
+    padding: 0 8px;
+  }
+}
 
 </style>
 </head>
@@ -665,11 +699,12 @@ const LAY={
 D:{W:920,H:700,sun:200,max:1,nodes:[["Python",96,0,309,549],["Java",86,0,168,557],["JavaScript",106,0,78,464],["React",92,0,161,360],["SQL",82,0,82,266],["Excel",90,0,193,221],["Power BI",98,0,196,93],["Analytical Thinking",120,1,338,72],["Problem Solving",114,1,470,145],["Critical Thinking",112,1,615,166],["Logical Reasoning",114,1,738,85],["Decision Making",110,1,761,235],["Communication",114,2,851,366],["Teamwork",100,2,711,384],["Adaptability",110,2,762,514],["Time Management",114,2,668,626],["Creativity",98,2,544,561],["Leadership",102,2,434,637]],edges:[[-1,0],[-1,8],[-1,16],[0,1],[0,17],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[8,7],[8,9],[9,10],[10,11],[11,13],[13,12],[14,13],[15,14],[16,15],[16,17]]},
 M:{W:400,H:1060,sun:190,max:1.25,nodes:[["Python",96,0,104,1000],["Java",86,0,60,887],["JavaScript",106,0,104,769],["React",92,0,58,649],["SQL",82,0,53,427],["Excel",90,0,57,311],["Power BI",98,0,61,89],["Analytical Thinking",120,1,138,204],["Problem Solving",114,1,194,69],["Critical Thinking",112,1,332,103],["Logical Reasoning",114,1,305,243],["Decision Making",110,1,197,336],["Communication",114,2,331,384],["Teamwork",100,2,338,659],["Adaptability",110,2,241,753],["Time Management",114,2,331,863],["Creativity",98,2,334,999],["Leadership",102,2,199,912]],edges:[[-1,4],[-1,11],[-1,13],[0,17],[1,0],[2,1],[3,2],[4,3],[4,5],[5,6],[5,7],[6,8],[9,8],[10,9],[11,7],[11,10],[13,12],[13,14],[14,15],[15,16],[15,17]]}};
 const cons=$('#cons'),stage=$('#stage'),lines=$('#lines'),sunEl=stage.querySelector('.sun'),tip=$('#tip');let mode='';
+
 function fitCons() {
   const L = LAY[mode];
   const availableWidth = cons.clientWidth;
 
-  const scale = Math.min(availableWidth / L.W, L.max);
+  const scale = Math.min(availableWidth / L.W, 1);
 
   stage.style.transform = `scale(${scale})`;
   stage.style.left = `${(availableWidth - L.W * scale) / 2}px`;
@@ -678,7 +713,8 @@ function fitCons() {
   cons.style.height = `${L.H * scale}px`;
 }
 
-function buildCons(){const key=innerWidth<700?'M':'D';if(key===mode){fitCons();return}mode=key;const L=LAY[key],cx=L.W/2,cy=L.H/2;
+function buildCons(){
+  const key = 'D';;if(key===mode){fitCons();return}mode=key;const L=LAY[key],cx=L.W/2,cy=L.H/2;
 stage.querySelectorAll('.pn').forEach(n=>n.remove());stage.style.width=L.W+'px';stage.style.height=L.H+'px';
 Object.assign(sunEl.style,{width:L.sun+'px',height:L.sun+'px',left:cx-L.sun/2+'px',top:cy-L.sun/2+'px',margin:0});
 lines.setAttribute('viewBox',`0 0 ${L.W} ${L.H}`);
