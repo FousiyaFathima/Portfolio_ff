@@ -1,1067 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fousiya Fathima — BCA Student | Developer & Analytics Enthusiast</title>
-<meta name="description" content="Portfolio of Fousiya Fathima, a third-year BCA student interested in web development and data analytics." />
-
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Fonts -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fousiya Fathima | BCA Student, Developer &amp; Analytics Enthusiast</title>
+<meta name="description" content="Portfolio of Fousiya Fathima, a third-year BCA student interested in web development and data analytics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<!-- Lucide Icons -->
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-
-<!-- Tailwind config -->
-<script>
-  tailwind.config = {
-    darkMode: 'class',
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['Poppins', 'sans-serif'],
-          body: ['Inter', 'sans-serif'],
-        },
-        colors: {
-          brand: {
-            blue: '#2563EB',
-            purple: '#7C3AED',
-            success: '#10B981',
-          }
-        }
-      }
-    }
-  }
-</script>
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Great+Vibes&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
-  :root{
-    --bg: #FFF9F3;
-    --bg-2: #FFFDF9;
-    --card: #FFFFFF;
-    --text: #29243A;
-    --text-2: #625D70;
-    --border: #EEE5DD;
-    --accent: #2563EB;
-    --accent-2: #7C3AED;
-    --success: #10B981;
-    --shadow-sm: 0 1px 2px rgba(15,23,42,0.06);
-    --shadow-md: 0 8px 24px rgba(15,23,42,0.06);
-    --shadow-lg: 0 24px 48px -12px rgba(15,23,42,0.12);
-  }
-  html.dark{
-    --bg: #070B14;
-    --bg-2: #0B1120;
-    --card: #111A2E;
-    --text: #F1F5F9;
-    --text-2: #94A3B8;
-    --border: #1E293B;
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
-    --shadow-md: 0 8px 24px rgba(0,0,0,0.4);
-    --shadow-lg: 0 24px 48px -12px rgba(0,0,0,0.6);
-  }
+:root{--bg:#070614;--ink:#ece9ff;--mute:#a09cc8;--v:#8b5cf6;--c:#22d3ee;--p:#f472b6;--g:#10b981;--glass:rgba(255,255,255,.06);--line:rgba(255,255,255,.14);--nav:rgba(20,16,50,.6);--panel:#0e0b26;color-scheme:dark}
+html.light{--bg:#fff9f3;--ink:#29243a;--mute:#625d70;--glass:rgba(255,255,255,.75);--line:rgba(40,30,80,.14);--nav:rgba(255,255,255,.75);--panel:#f3edff;color-scheme:light}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 'Plus Jakarta Sans',system-ui,sans-serif;overflow-x:hidden;padding-top:env(safe-area-inset-top,0);transition:background .4s}
+h1,h2,h3,h4{font-family:'Playfair Display','Plus Jakarta Sans',sans-serif;line-height:1.15;margin:0}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--c);outline-offset:3px}
+.bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(60% 50% at 15% 10%,rgba(139,92,246,.35),transparent 60%),radial-gradient(50% 45% at 85% 30%,rgba(34,211,238,.22),transparent 60%),radial-gradient(60% 50% at 50% 100%,rgba(244,114,182,.22),transparent 60%);background-size:140% 140%;animation:drift 18s ease-in-out infinite alternate}
+html.light .bg{opacity:.5}
+@keyframes drift{to{background-position:100% 100%}}
+#fx{position:fixed;inset:0;z-index:-1;pointer-events:none}
+nav{position:fixed;top:calc(12px + env(safe-area-inset-top,0));left:50%;transform:translateX(-50%);z-index:30;display:flex;align-items:center;gap:2px;padding:6px;border:1px solid var(--line);border-radius:999px;background:var(--nav);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 10px 40px rgba(0,0,0,.3);max-width:calc(100vw - 16px);overflow-x:auto;scrollbar-width:none}
+nav a,nav button{padding:8px 13px;border-radius:999px;font-size:14px;color:var(--mute);white-space:nowrap;transition:.25s;background:none;border:0;cursor:pointer}
+nav a:hover,nav button:hover{background:linear-gradient(120deg,var(--v),var(--c));color:#fff}
+nav .hire{background:linear-gradient(120deg,var(--v),var(--c));color:#fff}
+section{max-width:1200px;margin:0 auto;padding:100px 22px 20px}
+h2{font-size:clamp(30px,4.5vw,48px);margin-bottom:10px}
+.lead{color:var(--mute);max-width:620px;margin:0 0 36px}
+.c{text-align:center}.c .lead{margin-inline:auto}
+.grad{background:linear-gradient(110deg,var(--v),var(--c) 55%,var(--p));-webkit-background-clip:text;background-clip:text;color:transparent}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--line);border-radius:99px;background:var(--glass);font-size:14px;margin-bottom:16px}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--g);box-shadow:0 0 10px var(--g)}
+#hero{min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:10px;padding-top:120px}
+#hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800}
+.type{font:500 clamp(20px,2.6vw,30px)/1.4 'Plus Jakarta Sans';margin:16px 0;min-height:1.4em}
+.type i{display:inline-block;width:2px;height:1em;background:var(--c);margin-left:3px;vertical-align:-.12em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{padding:13px 26px;border-radius:999px;font-weight:500;border:1px solid var(--line);background:var(--glass);transition:.3s;display:inline-block;cursor:pointer}
+.btn.glow{background:linear-gradient(120deg,var(--v),var(--c));border-color:transparent;color:#fff;box-shadow:0 0 28px rgba(139,92,246,.55)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 36px rgba(34,211,238,.5)}
+.stats{display:flex;gap:34px;margin-top:38px}.stats b{display:block;font:800 36px 'Playfair Display'}.stats span{font-size:13px;color:var(--mute)}
+#hero3d{position:relative;height:min(64vh,560px);min-height:340px}
+#hero3d canvas{position:absolute;inset:0;width:100%;height:100%}
+.ff{position:absolute;inset:0;display:grid;place-items:center;font:800 150px 'Playfair Display'}
+.mq{border-block:1px solid var(--line);background:var(--glass);overflow:hidden;padding:14px 0;margin-top:40px}
+.mq div{display:flex;gap:44px;width:max-content;animation:mq 30s linear infinite;font:600 20px 'Playfair Display';color:var(--mute);white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.card{position:relative;border-radius:20px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:16px;transition:transform .15s,box-shadow .3s,border-color .3s;--mx:50%;--my:50%;display:flex;flex-direction:column}
+.card:hover{border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 0 34px rgba(34,211,238,.3)}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(260px circle at var(--mx) var(--my),rgba(255,255,255,.12),transparent 60%);opacity:0;transition:.3s}
+.card:hover::after{opacity:1}
+.card h3,.card h4{font-size:18px;margin:6px 0 4px}.card p{margin:0;color:var(--mute);font-size:15px}
+.shot{height:210px;border-radius:14px;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;margin-bottom:14px;padding:6px;width:100%}
+.shot img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .5s}
+.card:hover .shot img{transform:scale(1.05)}
+.ph{display:grid;place-items:center;text-align:center;width:100%;height:100%;border-radius:10px;padding:14px;font:600 15px 'Playfair Display';color:var(--mute);background:repeating-linear-gradient(45deg,transparent 0 12px,rgba(139,92,246,.08) 12px 24px)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}.tag{font-size:12px;font-weight:500;padding:3px 11px;border-radius:99px;border:1px solid currentColor}
+.t1{color:var(--v)}.t2{color:var(--c)}.t3{color:var(--g)}.t4{color:var(--p)}
+.ico{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:22px;margin-bottom:6px}
+.more{margin-top:auto;padding-top:14px;color:var(--c);font-weight:500;background:none;border:0;cursor:pointer;text-align:left;font-size:15px}
+.more:hover{color:var(--p)}
+.grp{margin:44px 0 18px}.grp h3{font-size:24px}.grp p{color:var(--mute);margin:4px 0 0;font-size:15px}
+/* skills */
+.sun{position:absolute;width:200px;height:200px;border-radius:50%;display:grid;place-items:center;text-align:center;font:700 21px/1.2 'Playfair Display',serif;color:#fff;background:radial-gradient(circle at 35% 30%,#fff3,transparent 40%),linear-gradient(140deg,var(--v),var(--p));box-shadow:0 0 70px rgba(139,92,246,.7);z-index:25;text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.sun small{display:block;font:500 13px 'Plus Jakarta Sans',sans-serif;margin-top:6px}
+.code{font:700 32px 'Plus Jakarta Sans',sans-serif;margin-bottom:6px;animation:spin3 7s linear infinite}
+@keyframes spin3{to{transform:rotateY(360deg)}}
+#tip{text-align:center;color:var(--mute);min-height:1.6em;margin:8px 0 30px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{padding:6px 13px;border-radius:99px;border:1px solid var(--line);background:var(--glass);font-size:14px;color:var(--mute);transition:.3s}
+.chip:hover{color:var(--c);border-color:var(--c);transform:translateY(-3px)}
+/* about */
+.wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+/* timeline */
+.tl{position:relative;max-width:760px;margin:0 auto;padding-left:38px}
+.tl::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(var(--v),var(--c),var(--p));box-shadow:0 0 16px var(--c)}
+.ev{position:relative;margin-bottom:24px}
+.ev::before{content:"";position:absolute;left:-37px;top:24px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--c);box-shadow:0 0 14px var(--c)}
+.ev .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+ul.ck{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px;font-size:15px;color:var(--mute)}
+ul.ck li::before{content:"✔";color:var(--g);margin-right:8px}
+.dot{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font:800 20px 'Playfair Display';color:#fff}
+/* contact */
+.envs{height:150px;perspective:700px;display:grid;place-items:center;margin-bottom:10px}
+.env{position:relative;width:140px;height:92px;border-radius:8px;background:linear-gradient(135deg,var(--v),#4c1d95);box-shadow:0 0 50px rgba(139,92,246,.7);animation:envf 6s ease-in-out infinite}
+.env::after{content:"";position:absolute;left:0;top:0;border:70px solid transparent;border-top:48px solid var(--c);border-bottom:0;filter:drop-shadow(0 4px 10px #0006)}
+@keyframes envf{0%,100%{transform:translateY(0) rotateY(-25deg) rotateX(12deg)}50%{transform:translateY(-16px) rotateY(25deg) rotateX(-6deg)}}
+.cl{display:grid;gap:12px}.cl a{display:flex;align-items:center;gap:14px;padding:14px;border-radius:16px;border:1px solid var(--line);background:var(--glass);transition:.3s}
+.cl a:hover{border-color:var(--c);box-shadow:0 0 28px rgba(34,211,238,.3);transform:translateX(6px)}
+.cl small{display:block;color:var(--mute);font-size:12px;line-height:1.3}
+footer{border-top:1px solid var(--line);margin-top:70px;padding:28px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;color:var(--mute);font-size:14px;max-width:1200px;margin-inline:auto}
+#lb{position:fixed;inset:0;z-index:50;background:rgba(5,4,15,.88);backdrop-filter:blur(8px);display:none;place-items:center;padding:24px;cursor:zoom-out}
+#lb.on{display:grid}#lb img{max-width:100%;max-height:88vh;border-radius:12px;box-shadow:0 0 60px rgba(139,92,246,.5)}#lb p{color:#fff;text-align:center;margin:10px 0 0}
+@media(max-width:820px){#hero,.wrap{grid-template-columns:1fr}#hero{padding-top:110px}.ff{font-size:110px}.stats{gap:22px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 
-  *{ -webkit-font-smoothing: antialiased; }
-  html{ scroll-behavior: smooth; }
-  body{
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    transition: background .4s ease, color .4s ease;
-    overflow-x: hidden;
-  }
-  h1,h2,h3,h4,.font-display{ font-family: 'Poppins', sans-serif; }
+.hi{display:block;font:500 clamp(20px,2.4vw,28px) 'Plus Jakarta Sans',sans-serif;color:var(--mute);margin-bottom:2px}
+.script{display:block;font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(64px,10vw,124px);line-height:1.15;padding:.05em .12em .18em 0;letter-spacing:.01em}
+h2{font-weight:700;letter-spacing:-.01em}
+@media(max-width:820px){.script{font-size:clamp(60px,17vw,100px)}}
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar{ width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track{ background: transparent; }
-  ::-webkit-scrollbar-thumb{
-    background: linear-gradient(180deg, var(--accent), var(--accent-2));
-    border-radius: 10px;
-  }
+/* ===== SKILLS: floating constellation ===== */
+#cons{position:relative;width:100%}
+#stage{position:absolute;top:0;transform-origin:0 0}
+#lines{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+#lines line{stroke:rgba(167,139,250,.45);stroke-width:1.5;filter:drop-shadow(0 0 4px rgba(34,211,238,.6))}
+#stage .sun{animation:pnf 8s ease-in-out infinite alternate}
+.pn{position:absolute;z-index:2;border-radius:50%;display:grid;place-items:center;text-align:center;padding:8px;color:#0b0a1c;font:700 14.5px/1.15 'Plus Jakarta Sans',sans-serif;cursor:pointer;box-shadow:0 0 26px var(--glow),inset -8px -10px 18px rgba(0,0,0,.18);animation:pnf var(--dur) ease-in-out var(--dl) infinite alternate;transition:transform .3s,box-shadow .3s,filter .3s}
+.pn span{color:#0b0a1c;text-wrap:balance}
+.pn:hover,.pn:focus-visible{transform:scale(1.1);box-shadow:0 0 56px var(--glow);filter:brightness(1.15);z-index:5}
+@keyframes pnf{to{translate:3px -9px}}
+.legend{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin:14px 0 0;color:var(--mute);font-size:14px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--k);box-shadow:0 0 10px var(--k);margin-right:7px}
 
-  /* Gradient text */
-  .gradient-text{
-    background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .gradient-text-success{
-    background: linear-gradient(135deg, #10B981 0%, #2563EB 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+/* ===== CERTIFICATIONS: 3D vault ===== */
+.vault{position:relative}
+.vt{text-align:center;font-size:clamp(26px,3.4vw,38px);margin:0 0 22px}
+.vslot{position:relative;width:min(460px,88%);height:200px;margin:0 auto 56px}
+.vslot::after{content:"";position:absolute;left:8%;right:8%;bottom:-26px;height:30px;border-radius:50%;background:radial-gradient(closest-side,rgba(139,92,246,.55),transparent);filter:blur(6px)}
+.vp{position:absolute;opacity:0;transform:translateY(46px) scale(.92);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.vault.in .vp{opacity:1;transform:none}
+.vback{inset:0;z-index:1;border-radius:18px;background:linear-gradient(160deg,rgba(139,92,246,.3),rgba(34,211,238,.1));border:1px solid rgba(167,139,250,.75);box-shadow:0 0 60px rgba(139,92,246,.5),inset 0 0 50px rgba(34,211,238,.2),0 50px 40px -30px #000}
+.vfront{left:0;right:0;bottom:0;height:150px;z-index:4;pointer-events:none;overflow:hidden;border-radius:8px 8px 18px 18px;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(139,92,246,.16) 45%,rgba(34,211,238,.14));backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px);border:1px solid rgba(34,211,238,.65);box-shadow:0 0 34px rgba(34,211,238,.35),inset 0 1px 0 rgba(255,255,255,.4)}
+.vfront::after{content:"";position:absolute;inset:0;background:linear-gradient(112deg,transparent 28%,rgba(255,255,255,.2) 36%,transparent 46%)}
+.vlid{left:-6px;right:-6px;top:0;height:52px;z-index:5;pointer-events:none;transform-origin:50% 0;border-radius:14px 14px 4px 4px;background:linear-gradient(rgba(196,181,253,.6),rgba(139,92,246,.28));border:1px solid rgba(196,181,253,.9);box-shadow:0 0 30px rgba(139,92,246,.6)}
+.vault.in .vlid{transform:perspective(900px) rotateX(0)}
+.vault.open .vlid{transform:perspective(900px) rotateX(-118deg)}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;perspective:1300px}
+@media(max-width:980px){.vgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.vgrid{grid-template-columns:1fr}}
+.vc{position:relative;z-index:2;opacity:0;pointer-events:none;transform-style:preserve-3d;box-shadow:0 18px 40px -18px rgba(0,0,0,.7);transition:opacity .9s,transform 1.3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}
+.vault.in .vc{opacity:1}
+.vc.fly{z-index:6}
+.vc.done{pointer-events:auto;transition:transform .3s,box-shadow .3s,border-color .3s}
+.vc.done:hover{transform:translateY(-8px) translateZ(20px);box-shadow:0 0 0 1px var(--c),0 0 40px rgba(34,211,238,.4),0 26px 40px -18px rgba(0,0,0,.8)}
+.vc .shot{height:200px}
+.lbx{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:16px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(20,16,50,.85);color:#fff;font-size:20px;line-height:1;cursor:pointer;z-index:2}
 
-  /* Glassmorphism nav */
-  .glass{
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border: 1px solid rgba(255,255,255,0.6);
-  }
-  html.dark .glass{
-    background: rgba(11,17,32,0.6);
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-
-  /* Card */
-  .card{
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    box-shadow: var(--shadow-sm);
-    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, border-color .35s ease;
-  }
-  .card:hover{
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lg);
-    border-color: rgba(37,99,235,0.25);
-  }
-
-  /* Primary button */
-  .btn-primary{
-    background: var(--accent);
-    color: #fff;
-    border-radius: 12px;
-    transition: all .35s ease;
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-  }
-  .btn-primary::before{
-    content:'';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #7C3AED, #2563EB);
-    opacity: 0;
-    transition: opacity .35s ease;
-    z-index: -1;
-  }
-  .btn-primary:hover::before{ opacity: 1; }
-  .btn-primary:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px -8px rgba(124,58,237,0.5);
-  }
-  .btn-ghost{
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
-    border-radius: 12px;
-    transition: all .3s ease;
-  }
-  .btn-ghost:hover{
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-2px);
-  }
-
-  /* Section heading pill */
-  .pill{
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    background: rgba(37,99,235,0.08);
-    color: var(--accent);
-    border: 1px solid rgba(37,99,235,0.15);
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-  }
-  html.dark .pill{
-    background: rgba(37,99,235,0.12);
-    color: #93C5FD;
-  }
-
-  /* Floating animation */
-  @keyframes float{
-    0%,100%{ transform: translateY(0px) rotate(0deg); }
-    50%{ transform: translateY(-18px) rotate(3deg); }
-  }
-  .float-1{ animation: float 6s ease-in-out infinite; }
-  .float-2{ animation: float 8s ease-in-out infinite; animation-delay: -2s; }
-  .float-3{ animation: float 7s ease-in-out infinite; animation-delay: -4s; }
-
-  /* Typing cursor */
-  .cursor{
-    display: inline-block;
-    width: 3px;
-    height: 1em;
-    background: var(--accent);
-    margin-left: 4px;
-    vertical-align: middle;
-    animation: blink 1s step-end infinite;
-  }
-  @keyframes blink{ 50%{ opacity: 0; } }
-
-  /* Scroll reveal */
-  .reveal{
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1);
-    transition-delay: var(--delay, 0s);
-  }
-  .reveal.in{ opacity: 1; transform: translateY(0); }
-  .reveal-left{ opacity:0; transform: translateX(-40px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); transition-delay: var(--delay,0s); }
-  .reveal-left.in{ opacity:1; transform: translateX(0); }
-  .reveal-right{ opacity:0; transform: translateX(40px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); transition-delay: var(--delay,0s); }
-  .reveal-right.in{ opacity:1; transform: translateX(0); }
-  .reveal-zoom{ opacity:0; transform: scale(.92); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); transition-delay: var(--delay,0s); }
-  .reveal-zoom.in{ opacity:1; transform: scale(1); }
-
-  /* Background orbs */
-  .orb{
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
-    pointer-events: none;
-    z-index: 0;
-  }
-  html.dark .orb{ opacity: 0.35; }
-
-  /* Grid bg */
-  .grid-bg{
-    background-image:
-      linear-gradient(to right, rgba(15,23,42,0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(15,23,42,0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
-    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-  }
-  html.dark .grid-bg{
-    background-image:
-      linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
-  }
-
-  /* Timeline */
-  .timeline{
-    position: relative;
-    padding-left: 32px;
-  }
-  .timeline::before{
-    content:'';
-    position: absolute;
-    left: 8px;
-    top: 6px;
-    bottom: 6px;
-    width: 2px;
-    background: linear-gradient(180deg, var(--accent), var(--accent-2));
-    border-radius: 2px;
-  }
-  .timeline-dot{
-    position: absolute;
-    left: 0;
-    top: 6px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--card);
-    border: 3px solid var(--accent);
-    box-shadow: 0 0 0 4px rgba(37,99,235,0.15);
-  }
-
-  /* Skill chip */
-  .chip{
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-2);
-    transition: all .3s ease;
-  }
-  .chip:hover{
-    transform: translateY(-3px);
-    border-color: var(--accent);
-    color: var(--accent);
-    box-shadow: 0 8px 16px -8px rgba(37,99,235,0.4);
-  }
-
-  /* Marquee */
-  .marquee{
-    display: flex;
-    gap: 48px;
-    animation: marquee 28s linear infinite;
-    width: max-content;
-  }
-  @keyframes marquee{
-    from{ transform: translateX(0); }
-    to{ transform: translateX(-50%); }
-  }
-
-  /* Project card image */
-  .project-img{
-    aspect-ratio: 16/10;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: var(--bg-2);
-    transition: transform .6s ease;
-  }
-  .project-card:hover .project-img{ transform: scale(1.06); }
-
-
-  /* Mobile menu */
-  .mobile-menu{
-    transform: translateY(-12px);
-    opacity: 0;
-    pointer-events: none;
-    transition: all .3s ease;
-  }
-  .mobile-menu.open{
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-
-  /* Avatar ring */
-  .avatar-ring{
-    background: conic-gradient(from 0deg, #2563EB, #7C3AED, #10B981, #2563EB);
-    animation: spin 12s linear infinite;
-  }
-  @keyframes spin{ to{ transform: rotate(360deg); } }
-
-  /* Stat counter */
-  .stat-num{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: clamp(28px, 4vw, 40px);
-    line-height: 1;
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    *{ animation: none !important; transition: none !important; }
-    .reveal, .reveal-left, .reveal-right, .reveal-zoom{ opacity:1; transform:none; }
-  }
+/* ===== ABOUT: 3D phone ===== */
+.pscene{position:relative;height:clamp(420px,52vw,640px);display:grid;place-items:center;--rx:0deg;--ry:0deg;--amp:14deg}
+.pwrap{width:100%;height:100%;opacity:0;transform:perspective(1100px) translateX(-70px) rotateY(-40deg) scale(.85);transition:opacity 1.2s,transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.pscene.in .pwrap{opacity:1;transform:none}
+.pfloat{width:100%;height:100%;animation:pfl 7s ease-in-out infinite alternate}
+.ptilt{width:100%;height:100%;transform:perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .2s ease-out}
+.pspin{width:100%;height:100%;animation:psp 16s ease-in-out infinite}
+.pimg{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 0 30px rgba(139,92,246,.35));transition:filter .4s;mix-blend-mode:lighten;-webkit-mask-image:radial-gradient(ellipse 96% 96% at 50% 50%,#000 88%,transparent 100%);mask-image:radial-gradient(ellipse 96% 96% at 50% 50%,#000 88%,transparent 100%)}
+html.light .pimg{mix-blend-mode:normal}
+.pscene:hover .pimg{filter:drop-shadow(0 0 48px rgba(167,139,250,.8))}
+@keyframes pfl{from{translate:0 -12px;scale:1}to{translate:0 12px;scale:1.03}}
+@keyframes psp{0%,100%{transform:perspective(1100px) rotateY(calc(var(--amp)*-1)) rotateX(3deg)}50%{transform:perspective(1100px) rotateY(var(--amp)) rotateX(-3deg)}}
+@media(max-width:820px){.pscene{height:400px;--amp:7deg}.pfloat{animation-duration:9s}}
+@media(prefers-reduced-motion:reduce){.pwrap{opacity:1;transform:none}}
 </style>
 </head>
+<body>
+<div class="bg"></div><canvas id="fx"></canvas>
+<nav aria-label="Main"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#certifications">Certs</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a><button id="theme" aria-label="Toggle light or dark theme">◐</button><a class="hire" href="#contact">Hire Me</a></nav>
 
-<body class="font-body">
+<section id="home" style="padding-bottom:0"><div id="hero">
+<div>
+<div class="pill"><i></i>BCA 3rd Year · 2026–2027</div>
+<h1><span class="hi">Hi, I’m</span><span class="script grad">Fousiya Fathima</span></h1>
+<div class="type">I’m a <span id="role" class="grad"></span><i></i></div>
+<p style="color:var(--mute);max-width:520px;margin:0">Third-year BCA student building academic web applications and exploring data analytics. Interested in coding, databases, dashboard creation, and practical problem-solving.</p>
+<div class="btns"><a class="btn glow" href="#projects">🚀 View My Work</a><a class="btn" href="./com_resume.pdf" download="Fousiya_Fathima_Resume.pdf">⬇ Download Resume</a></div>
+<div class="stats"><div><b class="grad" data-count="5">0</b><span>Credentials</span></div><div><b class="grad" data-count="5">0</b><span>Projects</span></div><div><b class="grad" data-count="2">0</b><span>Job Simulations</span></div></div>
+</div>
+<div id="hero3d"><div class="ff grad" id="ffb">FF</div></div>
+</div></section>
+<div class="mq"><div id="mq"></div></div>
 
-<!-- ===== Navigation ===== -->
-<header class="fixed top-0 inset-x-0 z-50 px-4 sm:px-6 pt-4">
-  <nav class="glass max-w-6xl mx-auto rounded-2xl px-5 sm:px-6 py-3 flex items-center justify-between">
-    <a href="#home" class="flex items-center gap-2.5 group">
-      <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-display font-bold text-sm" style="background:linear-gradient(135deg,#2563EB,#7C3AED)">FF</div>
-      <span class="font-display font-semibold text-[15px] tracking-tight">Fousiya Fathima</span>
-    </a>
-
-    <ul class="hidden md:flex items-center gap-1 text-sm font-medium">
-      <li><a href="#about" class="px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition">About</a></li>
-      <li><a href="#skills" class="px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition">Skills</a></li>
-      <li><a href="#education" class="px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition">Education</a></li>
-      <li><a href="#certifications" class="px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition">Certs</a></li>
-      <li><a href="#experience" class="px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition">Experience</a></li>
-      <li><a href="#projects" class="px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition">Projects</a></li>
-      <li><a href="#contact" class="px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition">Contact</a></li>
-    </ul>
-
-    <div class="flex items-center gap-2">
-      <button id="theme-toggle" aria-label="Toggle theme" class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-black/5 dark:hover:bg-white/10 transition border" style="border-color:var(--border)">
-        <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
-        <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
-      </button>
-      <a href="#contact" class="hidden sm:inline-flex btn-primary px-4 py-2 text-sm font-semibold">Hire Me</a>
-      <button id="menu-btn" aria-label="Menu" class="md:hidden w-9 h-9 rounded-lg flex items-center justify-center hover:bg-black/5 dark:hover:bg-white/10 transition border" style="border-color:var(--border)">
-        <i data-lucide="menu" class="w-4 h-4"></i>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="mobile-menu md:hidden glass max-w-6xl mx-auto mt-2 rounded-2xl p-4">
-    <ul class="flex flex-col gap-1 text-sm font-medium">
-      <li><a href="#about" class="block px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5">About</a></li>
-      <li><a href="#skills" class="block px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5">Skills</a></li>
-      <li><a href="#education" class="block px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5">Education</a></li>
-      <li><a href="#certifications" class="block px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5">Certifications</a></li>
-      <li><a href="#experience" class="block px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5">Experience</a></li>
-      <li><a href="#projects" class="block px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5">Projects</a></li>
-      <li><a href="#contact" class="block px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5">Contact</a></li>
-    </ul>
-  </div>
-</header>
-
-<!-- ===== Hero ===== -->
-<section id="home" class="relative pt-32 sm:pt-40 pb-20 sm:pb-28 overflow-hidden">
-  <div class="orb" style="width:520px;height:520px;background:#F6C9D8;top:-100px;left:-120px"></div>
-  <div class="orb" style="width:480px;height:480px;background:#DCCBFA;top:50px;right:-140px"></div>
-  <div class="orb" style="width:380px;height:380px;background:#C7E9DE;bottom:-160px;left:40%"></div>
-  <div class="absolute inset-0 grid-bg"></div>
-
-  <div class="relative max-w-6xl mx-auto px-5 sm:px-6">
-    <div class="grid lg:grid-cols-12 gap-12 items-center">
-      <!-- Text -->
-      <div class="lg:col-span-7">
-        <div class="reveal in pill mb-6">
-          <span class="w-2 h-2 rounded-full bg-brand-success animate-pulse"></span>
-          BCA 3rd Year · 2026–2027
-        </div>
-
-        <h1 class="font-display font-bold tracking-tight leading-[1.05] text-[clamp(38px,6vw,68px)]">
-          Hi, I'm <span class="gradient-text">Fousiya Fathima</span>
-        </h1>
-
-        <h2 class="font-display font-semibold text-[clamp(22px,3vw,32px)] mt-4 text-[var(--text-2)]">
-          I'm a <span id="typed" class="gradient-text"></span><span class="cursor"></span>
-        </h2>
-
-        <p class="mt-6 text-[var(--text-2)] text-base sm:text-lg max-w-xl leading-relaxed">
-          Third-year BCA student building academic web applications and exploring data analytics.
-          Interested in coding, databases, dashboard creation, and practical problem-solving.
-        </p>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#projects" class="btn-primary px-6 py-3 text-sm font-semibold inline-flex items-center gap-2">
-            <i data-lucide="rocket" class="w-4 h-4"></i> View My Work
-          </a>
-          <a href="resume.pdf" download class="btn-ghost px-6 py-3 text-sm font-semibold inline-flex items-center gap-2">
-            <i data-lucide="download" class="w-4 h-4"></i> Download Resume
-          </a>
-        </div>
-
-        <!-- Stats -->
-        <div class="mt-12 grid grid-cols-3 gap-6 max-w-md">
-          <div>
-            <div class="stat-num gradient-text" data-count="5">0</div>
-            <div class="text-xs text-[var(--text-2)] mt-1 font-medium">Credentials</div>
-          </div>
-          <div>
-            <div class="stat-num gradient-text-success" data-count="5">0</div>
-            <div class="text-xs text-[var(--text-2)] mt-1 font-medium">Projects</div>
-          </div>
-          <div>
-            <div class="stat-num gradient-text" data-count="2">0</div>
-            <div class="text-xs text-[var(--text-2)] mt-1 font-medium">Job Simulations</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Avatar + floating cards -->
-      <div class="lg:col-span-5 relative">
-        <div class="relative mx-auto w-[280px] h-[280px] sm:w-[340px] sm:h-[340px]">
-          <!-- Rotating ring -->
-          <div class="absolute inset-0 rounded-full avatar-ring p-[3px]">
-            <div class="w-full h-full rounded-full" style="background:var(--bg)"></div>
-          </div>
-          <!-- Avatar inner -->
-          <div class="absolute inset-[10px] rounded-full overflow-hidden flex items-center justify-center" style="background:linear-gradient(160deg, rgba(37,99,235,0.12), rgba(124,58,237,0.12))">
-            <div class="text-center">
-              <div class="font-display font-bold text-[80px] sm:text-[110px] gradient-text leading-none">FF</div>
-              <div class="text-xs text-[var(--text-2)] mt-2 font-medium tracking-widest uppercase">BCA · 2027</div>
-            </div>
-          </div>
-
-          <!-- Floating chips -->
-          <div class="absolute -top-2 -left-6 sm:-left-12 card px-4 py-3 flex items-center gap-3 float-1" style="border-radius:14px">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center text-white" style="background:linear-gradient(135deg,#2563EB,#7C3AED)">
-              <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
-            </div>
-            <div>
-              <div class="text-[11px] text-[var(--text-2)] font-medium">Data Analyst</div>
-              <div class="text-xs font-semibold">Excel · SQL</div>
-            </div>
-          </div>
-
-          <div class="absolute top-1/3 -right-4 sm:-right-12 card px-4 py-3 flex items-center gap-3 float-2" style="border-radius:14px">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center text-white" style="background:linear-gradient(135deg,#7C3AED,#10B981)">
-              <i data-lucide="code-2" class="w-4 h-4"></i>
-            </div>
-            <div>
-              <div class="text-[11px] text-[var(--text-2)] font-medium">Frontend Dev</div>
-              <div class="text-xs font-semibold">React · JS</div>
-            </div>
-          </div>
-
-          <div class="absolute -bottom-2 left-2 sm:left-0 card px-4 py-3 flex items-center gap-3 float-3" style="border-radius:14px">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center text-white" style="background:linear-gradient(135deg,#10B981,#2563EB)">
-              <i data-lucide="database" class="w-4 h-4"></i>
-            </div>
-            <div>
-              <div class="text-[11px] text-[var(--text-2)] font-medium">Software Dev</div>
-              <div class="text-xs font-semibold">Java · SQL</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section id="about"><div class="wrap">
+<div class="pscene" id="pscene"><div class="pwrap"><div class="pfloat"><div class="ptilt" id="ptilt"><div class="pspin"><img class="pimg" src="phone-collage.png" alt="3D smartphone showing the BakeBox, Redora and Soap Business Website projects" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:this.alt}))"></div></div></div></div></div>
+<div>
+<div class="pill">About Me</div>
+<h2>Turning data into <span class="grad">decisions</span> and ideas into <span class="grad">interfaces</span>.</h2>
+<p style="color:var(--mute)">I’m a third-year BCA student interested in web development, databases, and data analytics. Through academic and personal projects, I practise building web interfaces, working with databases, and presenting data in a clear way.</p>
+<p style="color:var(--mute)">I’ve completed virtual job simulations through Forage and worked on academic projects using web technologies, databases, and Excel. I’m continuing to strengthen my technical skills through hands-on practice and learning.</p>
+<div class="chips"><span class="chip">📍 India</span><span class="chip">🎓 BCA 3rd Year</span><span class="chip">💼 Student · 2026</span></div>
+</div></div>
+<div class="grid" id="roles" style="margin-top:36px"></div>
 </section>
 
-<!-- ===== Marquee ===== -->
-<section class="py-6 border-y" style="border-color:var(--border); background:var(--bg-2)">
-  <div class="overflow-hidden">
-    <div class="marquee text-[var(--text-2)] font-display font-semibold text-lg sm:text-xl">
-      <span class="flex items-center gap-12">
-        <span>Data Analyst</span><span class="text-brand-purple">✦</span>
-        <span>Frontend Developer</span><span class="text-brand-blue">✦</span>
-        <span>Software Developer</span><span class="text-brand-success">✦</span>
-        <span>Power BI (Learning)</span><span class="text-brand-purple">✦</span>
-        <span>Python (Basic)</span><span class="text-brand-blue">✦</span>
-        <span>SQL</span><span class="text-brand-success">✦</span>
-        <span>React</span><span class="text-brand-purple">✦</span>
-      </span>
-      <span class="flex items-center gap-12">
-        <span>Data Analyst</span><span class="text-brand-purple">✦</span>
-        <span>Frontend Developer</span><span class="text-brand-blue">✦</span>
-        <span>Software Developer</span><span class="text-brand-success">✦</span>
-        <span>Power BI (Learning)</span><span class="text-brand-purple">✦</span>
-        <span>Python (Basic)</span><span class="text-brand-blue">✦</span>
-        <span>SQL</span><span class="text-brand-success">✦</span>
-        <span>React</span><span class="text-brand-purple">✦</span>
-      </span>
-    </div>
-  </div>
+<section id="skills">
+<div class="c"><div class="pill">Technical Skills</div><h2>Tools and technologies I <span class="grad">work with</span></h2><p class="lead">Skills practised through coursework and academic projects. Hover a planet to explore.</p></div>
+<div id="cons"><div id="stage"><svg id="lines"></svg><div class="sun"><div><div class="code">&lt;/&gt;</div>Computer Science<small>&amp; Web Development</small></div></div></div></div>
+<div class="legend"><span><i style="--k:#22d3ee"></i>Technical</span><span><i style="--k:#a78bfa"></i>Analytical &amp; Problem Solving</span><span><i style="--k:#f472b6"></i>Soft Skills</span></div>
+<div id="tip" aria-live="polite">Hover a planet.</div>
+<div class="grid" id="skg"></div>
 </section>
 
-<!-- ===== About ===== -->
-<section id="about" class="py-20 sm:py-28 relative">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6">
-    <div class="grid lg:grid-cols-12 gap-12 items-start">
-      <div class="lg:col-span-5 reveal-left">
-        <div class="pill mb-5"><i data-lucide="user" class="w-3.5 h-3.5"></i> About Me</div>
-        <h2 class="font-display font-bold text-[clamp(30px,4vw,44px)] leading-tight tracking-tight">
-          Turning data into <span class="gradient-text">decisions</span> & ideas into <span class="gradient-text-success">interfaces</span>.
-        </h2>
-        <p class="mt-6 text-[var(--text-2)] leading-relaxed">
-          I'm a third-year BCA student interested in web development, databases, and data analytics.
-          Through academic and personal projects, I practise building web interfaces, working with
-          databases, and presenting data in a clear way.
-        </p>
-        <p class="mt-4 text-[var(--text-2)] leading-relaxed">
-          I've completed virtual job simulations through Forage and worked on academic projects using
-          web technologies, databases, and Excel. I'm continuing to strengthen my technical skills
-          through hands-on practice and learning.
-        </p>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <span class="chip"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> India</span>
-          <span class="chip"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> BCA 3rd Year</span>
-          <span class="chip"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i> Student · 2026</span>
-        </div>
-      </div>
-
-      <div class="lg:col-span-7 reveal-right">
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="card p-6">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white mb-4" style="background:linear-gradient(135deg,#2563EB,#7C3AED)">
-              <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
-            </div>
-            <h3 class="font-display font-semibold text-lg">Data Analyst</h3>
-            <p class="text-sm text-[var(--text-2)] mt-2 leading-relaxed">Exploring data analysis and visualisation using Excel and SQL, with Power BI as a learning area.</p>
-          </div>
-          <div class="card p-6">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white mb-4" style="background:linear-gradient(135deg,#7C3AED,#10B981)">
-              <i data-lucide="layout-template" class="w-5 h-5"></i>
-            </div>
-            <h3 class="font-display font-semibold text-lg">Frontend Developer</h3>
-            <p class="text-sm text-[var(--text-2)] mt-2 leading-relaxed">Building web interfaces using HTML, CSS, JavaScript and React through project practice.</p>
-          </div>
-          <div class="card p-6">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white mb-4" style="background:linear-gradient(135deg,#10B981,#2563EB)">
-              <i data-lucide="terminal" class="w-5 h-5"></i>
-            </div>
-            <h3 class="font-display font-semibold text-lg">Software Developer</h3>
-            <p class="text-sm text-[var(--text-2)] mt-2 leading-relaxed">Developing programming and database skills using Java, C, PHP, SQL and project-based practice.</p>
-          </div>
-          <div class="card p-6">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white mb-4" style="background:linear-gradient(135deg,#7C3AED,#2563EB)">
-              <i data-lucide="sparkles" class="w-5 h-5"></i>
-            </div>
-            <h3 class="font-display font-semibold text-lg">Always Learning</h3>
-            <p class="text-sm text-[var(--text-2)] mt-2 leading-relaxed">A quick learner who enjoys practising new technologies and improving projects through feedback.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section id="education">
+<div class="c"><div class="pill">Education</div><h2>My academic <span class="grad">journey</span></h2><p class="lead">A foundation in computer applications, programming, databases, and analytical thinking.</p></div>
+<div class="tl" id="edu"></div>
 </section>
 
-<!-- ===== Skills ===== -->
-<section id="skills" class="py-20 sm:py-28 relative" style="background:var(--bg-2)">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6">
-    <div class="text-center max-w-2xl mx-auto reveal">
-      <div class="pill mb-5"><i data-lucide="cpu" class="w-3.5 h-3.5"></i> Technical Skills</div>
-      <h2 class="font-display font-bold text-[clamp(30px,4vw,44px)] tracking-tight leading-tight">Tools & technologies I <span class="gradient-text">work with</span></h2>
-      <p class="mt-4 text-[var(--text-2)]">Skills practised through coursework and academic projects.</p>
-    </div>
-    <div class="mt-14 grid md:grid-cols-3 gap-6">
-      <div class="card p-7 reveal" style="--delay:0s"><div class="flex items-center gap-3 mb-5"><div class="w-11 h-11 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#2563EB,#7C3AED)"><i data-lucide="database" class="w-5 h-5"></i></div><h3 class="font-display font-semibold text-lg">Data & Analytics</h3></div><div class="flex flex-wrap gap-2"><span class="chip">Microsoft Excel</span><span class="chip">SQL</span><span class="chip">Pivot Tables & Charts</span><span class="chip">Data Visualization</span><span class="chip">Power BI (Learning)</span></div></div>
-      <div class="card p-7 reveal" style="--delay:0.1s"><div class="flex items-center gap-3 mb-5"><div class="w-11 h-11 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#7C3AED,#10B981)"><i data-lucide="code-2" class="w-5 h-5"></i></div><h3 class="font-display font-semibold text-lg">Frontend Development</h3></div><div class="flex flex-wrap gap-2"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">React.js</span><span class="chip">GitHub</span></div></div>
-      <div class="card p-7 reveal" style="--delay:0.2s"><div class="flex items-center gap-3 mb-5"><div class="w-11 h-11 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#10B981,#2563EB)"><i data-lucide="layers" class="w-5 h-5"></i></div><h3 class="font-display font-semibold text-lg">Programming & Tools</h3></div><div class="flex flex-wrap gap-2"><span class="chip">Java</span><span class="chip">C</span><span class="chip">PHP</span><span class="chip">Python (Basic)</span><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">VS Code</span><span class="chip">NetBeans</span></div></div>
-    </div>
-  </div>
+<section id="certifications">
+<div class="c"><div class="pill">Certifications &amp; Workshops</div><h2>Verified <span class="grad">credentials</span> and learning</h2><p class="lead">Certifications, virtual job simulations, training programmes, and workshop participation completed during my studies. Click a certificate to enlarge it.</p></div>
+<div id="certs"><div class="vault" id="vault"><h3 class="vt grad">My Achievement Vault</h3><div class="vslot" id="vslot"><div class="vp vback"></div><div class="vp vfront"></div><div class="vp vlid"></div></div><div class="vgrid" id="vgrid"></div></div></div>
 </section>
 
-<!-- ===== Education ===== -->
-<section id="education" class="py-20 sm:py-28">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6"><div class="grid lg:grid-cols-12 gap-12">
-    <div class="lg:col-span-5 reveal-left"><div class="pill mb-5"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Education</div><h2 class="font-display font-bold text-[clamp(30px,4vw,44px)] tracking-tight leading-tight">My academic <span class="gradient-text">journey</span></h2><p class="mt-4 text-[var(--text-2)] leading-relaxed">A foundation in computer applications, programming, databases, and analytical thinking.</p></div>
-    <div class="lg:col-span-7"><div class="timeline space-y-8">
-      <div class="relative reveal-right"><span class="timeline-dot"></span><div class="card p-6"><div class="flex flex-wrap items-center justify-between gap-2"><h3 class="font-display font-semibold text-lg">Bachelor of Computer Applications (BCA)</h3><span class="text-xs font-semibold text-brand-blue px-3 py-1 rounded-full" style="background:rgba(37,99,235,0.1)">2024 – 2027</span></div><p class="text-sm text-[var(--text-2)] mt-2">Third Year · CGPA (up to Semester IV): <strong style="color:var(--text)">8.7 / 10</strong></p><p class="text-sm text-[var(--text-2)] mt-1">Stella Maris College (Autonomous), Chennai · Expected graduation: April 2027</p></div></div>
-      <div class="relative reveal-right" style="--delay:0.1s"><span class="timeline-dot"></span><div class="card p-6"><div class="flex flex-wrap items-center justify-between gap-2"><h3 class="font-display font-semibold text-lg">Higher Secondary (Class 12)</h3><span class="text-xs font-semibold text-brand-purple px-3 py-1 rounded-full" style="background:rgba(124,58,237,0.1)">2023 – 2024</span></div><p class="text-sm text-[var(--text-2)] mt-2">S.J.N.S. Jain Matriculation Higher Secondary School · Percentage: <strong style="color:var(--text)">92%</strong></p></div></div>
-      <div class="relative reveal-right" style="--delay:0.2s"><span class="timeline-dot"></span><div class="card p-6"><div class="flex flex-wrap items-center justify-between gap-2"><h3 class="font-display font-semibold text-lg">Secondary School (Class 10 / SSLC)</h3><span class="text-xs font-semibold text-brand-success px-3 py-1 rounded-full" style="background:rgba(16,185,129,0.1)">2021 – 2022</span></div><p class="text-sm text-[var(--text-2)] mt-2">Rex Matriculation School · Percentage: <strong style="color:var(--text)">83%</strong></p></div></div>
-    </div></div>
-  </div></div>
+<section id="experience">
+<div class="c"><div class="pill">Experience</div><h2>Virtual <span class="grad">experience</span> and job simulations</h2><p class="lead">As a student, I have completed virtual job simulations through Forage to practise data analysis and visualisation tasks.</p></div>
+<div class="grid" id="exp" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))"></div>
+<div class="card rv" style="max-width:520px;margin:24px auto 0;flex-direction:row;gap:14px;align-items:center"><div class="ico" style="background:linear-gradient(135deg,var(--g),var(--v));margin:0">🚀</div><div><b>Open to internship opportunities</b><p style="font-size:14px">Availability: discuss based on college schedule</p></div></div>
 </section>
 
-<!-- ===== Certifications ===== -->
-<section id="certifications" class="py-20 sm:py-28" style="background:var(--bg-2)">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6"><div class="text-center max-w-2xl mx-auto reveal"><div class="pill mb-5"><i data-lucide="award" class="w-3.5 h-3.5"></i> Certifications</div><h2 class="font-display font-bold text-[clamp(30px,4vw,44px)] tracking-tight leading-tight">Verified <span class="gradient-text">credentials</span> & courses</h2><p class="mt-4 text-[var(--text-2)]">Certificates and workshop participation completed during my studies.</p></div>
-    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <article class="card p-6 reveal-zoom" style="--delay:0s"><button type="button" class="certificate-cover mb-5" data-certificate="certificates/deloitte.png" data-certificate-type="image" aria-label="Open certificate preview"><img src="certificates/deloitte.png" alt="Certificate preview" loading="lazy" onerror="this.style.display='none'"></button><div class="flex items-start justify-between mb-4"><div class="w-12 h-12 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#2563EB,#7C3AED)"><i data-lucide="badge-check" class="w-5 h-5"></i></div><span class="text-[11px] font-semibold text-brand-blue px-2.5 py-1 rounded-full" style="background:rgba(37,99,235,0.1)">Job Simulation</span></div><h3 class="font-display font-semibold text-base">Deloitte Australia — Data Analytics Job Simulation</h3><p class="text-sm text-[var(--text-2)] mt-1">Deloitte · Forage</p><p class="text-xs text-[var(--text-2)] mt-3">May 2026</p><button type="button" data-certificate="certificates/deloitte.png" data-certificate-type="image" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:text-brand-purple transition">View Certificate <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i></button></article>
-      <article class="card p-6 reveal-zoom" style="--delay:0.05s"><button type="button" class="certificate-cover mb-5" data-certificate="certificates/tata.png" data-certificate-type="image" aria-label="Open certificate preview"><img src="certificates/tata.png" alt="Certificate preview" loading="lazy" onerror="this.style.display='none'"></button><div class="flex items-start justify-between mb-4"><div class="w-12 h-12 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#7C3AED,#10B981)"><i data-lucide="badge-check" class="w-5 h-5"></i></div><span class="text-[11px] font-semibold text-brand-purple px-2.5 py-1 rounded-full" style="background:rgba(124,58,237,0.1)">Job Simulation</span></div><h3 class="font-display font-semibold text-base">Tata — Data Visualisation Job Simulation</h3><p class="text-sm text-[var(--text-2)] mt-1">Tata · Forage</p><p class="text-xs text-[var(--text-2)] mt-3">April 2026</p><button type="button" data-certificate="certificates/tata.png" data-certificate-type="image" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:text-brand-purple transition">View Certificate <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i></button></article>
-      <article class="card p-6 reveal-zoom" style="--delay:0.1s"><button type="button" class="certificate-cover mb-5" data-certificate="certificates/infosys.png" data-certificate-type="image" aria-label="Open certificate preview"><img src="certificates/infosys.png" alt="Certificate preview" loading="lazy" onerror="this.style.display='none'"></button><div class="flex items-start justify-between mb-4"><div class="w-12 h-12 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#10B981,#2563EB)"><i data-lucide="file-spreadsheet" class="w-5 h-5"></i></div><span class="text-[11px] font-semibold text-brand-success px-2.5 py-1 rounded-full" style="background:rgba(16,185,129,0.1)">Course</span></div><h3 class="font-display font-semibold text-base">Microsoft Excel 2016 — Beginner</h3><p class="text-sm text-[var(--text-2)] mt-1">Infosys Springboard</p><p class="text-xs text-[var(--text-2)] mt-3">2026</p><button type="button" data-certificate="certificates/infosys.png" data-certificate-type="image" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:text-brand-purple transition">View Certificate <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i></button></article>
-      <article class="card p-6 reveal-zoom" style="--delay:0.25s"><button type="button" class="certificate-cover mb-5" data-certificate="certificates/be10X.jpg" data-certificate-type="image" aria-label="Open certificate preview"><img src="certificates/be10X.jpg" alt="Certificate preview" loading="lazy" onerror="this.style.display='none'"></button><div class="flex items-start justify-between mb-4"><div class="w-12 h-12 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#111827,#6B7280)"><i data-lucide="sparkles" class="w-5 h-5"></i></div><span class="text-[11px] font-semibold text-brand-purple px-2.5 py-1 rounded-full" style="background:rgba(124,58,237,0.1)">Workshop</span></div><h3 class="font-display font-semibold text-base">AI Tools & Claude Workshop</h3><p class="text-sm text-[var(--text-2)] mt-1">be10x</p><p class="text-xs text-[var(--text-2)] mt-3">August 2026</p><button type="button" data-certificate="certificates/be10X.jpg" data-certificate-type="image" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:text-brand-purple transition">View Certificate <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i></button></article>
-      <article class="card p-6 reveal-zoom" style="--delay:0.3s"><button type="button" class="certificate-cover mb-5" data-certificate="certificates/computer.jpg" data-certificate-type="image" aria-label="Open certificate preview"><img src="certificates/computer.jpg" alt="Certificate preview" loading="lazy" onerror="this.style.display='none'"></button><div class="flex items-start justify-between mb-4"><div class="w-12 h-12 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#1D4ED8,#0F172A)"><i data-lucide="atom" class="w-5 h-5"></i></div><span class="text-[11px] font-semibold text-brand-blue px-2.5 py-1 rounded-full" style="background:rgba(37,99,235,0.1)">Academic Session</span></div><h3 class="font-display font-semibold text-base">Information Meets Quantum Physics — From Shannon’s Bit to the Quantum Qubit</h3><p class="text-sm text-[var(--text-2)] mt-1">Kristu Jayanti (Deemed to be University) · Department of Computational Studies and Department of Physical Sciences</p><p class="text-xs text-[var(--text-2)] mt-3">August 2026</p><button type="button" data-certificate="certificates/computer.jpg" data-certificate-type="image" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:text-brand-purple transition">View Certificate <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i></button></article>
-      <article class="card p-6 reveal-zoom" style="--delay:0.35s"><button type="button" class="certificate-cover mb-5" data-certificate="certificates/magicbus.jpg" data-certificate-type="image" aria-label="Open certificate preview"><img src="certificates/magicbus.jpg" alt="Certificate preview" loading="lazy" onerror="this.style.display='none'"></button><div class="flex items-start justify-between mb-4"><div class="w-12 h-12 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#1D4ED8,#60A5FA)"><i data-lucide="users" class="w-5 h-5"></i></div><span class="text-[11px] font-semibold text-brand-purple px-2.5 py-1 rounded-full" style="background:rgba(124,58,237,0.1)">Training</span></div><h3 class="font-display font-semibold text-base">AI and Life and Employability Skills</h3><p class="text-sm text-[var(--text-2)] mt-1">Magic Bus India Foundation · Supported by Infosys Foundation</p><p class="text-xs text-[var(--text-2)] mt-3">Date not specified on certificate</p><button type="button" data-certificate="certificates/magicbus.jpg" data-certificate-type="image" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:text-brand-purple transition">View Certificate <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i></button></article>
-      
-<article class="card p-6 reveal-zoom" style="--delay:0.15s">
-  <button
-    type="button"
-    class="certificate-cover mb-5"
-    data-certificate="certificates/velgrow.jpg"
-    data-certificate-type="image"
-    aria-label="Open IoT workshop certificate preview"
-  >
-    <img
-      src="certificates/velgrow.jpg"
-      alt="IoT Workshop Certificate"
-      loading="lazy"
-      onerror="this.style.display='block'; this.alt='Certificate image not found. Check the file path.'"
-    >
-  </button>
-
-  <div class="flex items-start justify-between mb-4">
-    <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white"
-         style="background:linear-gradient(135deg,#2563EB,#10B981)">
-      <i data-lucide="cpu" class="w-5 h-5"></i>
-    </div>
-    <span class="text-[11px] font-semibold text-brand-blue px-2.5 py-1 rounded-full"
-          style="background:rgba(37,99,235,0.1)">Workshop</span>
-  </div>
-
-  <h3 class="font-display font-semibold text-base">
-    Internet of Things (IoT) Workshop
-  </h3>
-  <p class="text-sm text-[var(--text-2)] mt-1">
-    Stella Maris College &amp; Velgrow Academy
-  </p>
-  <p class="text-xs text-[var(--text-2)] mt-3">February 2026</p>
-
-  <button
-    type="button"
-    data-certificate="certificates/velgrow.jpg"
-    data-certificate-type="image"
-    class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:text-brand-purple transition"
-  >
-    View Certificate
-    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
-  </button>
-</article>
-
-	</div>
-  </div>
+<section id="achievements">
+<div class="c"><div class="pill">Achievements</div><h2>Milestones I’m <span class="grad">proud of</span></h2></div>
+<div class="grid" id="ach" style="margin-top:30px"></div>
 </section>
 
-<!-- ===== Experience ===== -->
-<section id="experience" class="py-20 sm:py-28">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6">
-    <div class="grid lg:grid-cols-12 gap-12">
-      <div class="lg:col-span-5 reveal-left">
-        <div class="pill mb-5"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i> Experience</div>
-        <h2 class="font-display font-bold text-[clamp(30px,4vw,44px)] tracking-tight leading-tight">
-          Virtual <span class="gradient-text">experience</span> & job simulations
-        </h2>
-        <p class="mt-4 text-[var(--text-2)] leading-relaxed">
-          As a student, I have completed virtual job simulations through Forage to practise data analysis and visualisation tasks.
-        </p>
-        <div class="mt-6 card p-5 flex items-center gap-4">
-          <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#10B981,#2563EB)">
-            <i data-lucide="rocket" class="w-5 h-5"></i>
-          </div>
-          <div>
-            <div class="font-semibold text-sm">Open to internship opportunities</div>
-            <div class="text-xs text-[var(--text-2)]">Availability: discuss based on college schedule</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lg:col-span-7">
-        <div class="space-y-6">
-          <!-- Deloitte -->
-          <article class="card p-7 reveal-right">
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-              <div class="flex items-center gap-4">
-                <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-display font-bold text-lg" style="background:linear-gradient(135deg,#2563EB,#7C3AED)">D</div>
-                <div>
-                  <h3 class="font-display font-semibold text-lg">Data Analytics Job Simulation</h3>
-                  <p class="text-sm text-[var(--text-2)]">Deloitte Australia · Forage · Virtual</p>
-                </div>
-              </div>
-              <span class="text-xs font-semibold text-brand-blue px-3 py-1 rounded-full" style="background:rgba(37,99,235,0.1)">May 2026</span>
-            </div>
-            <ul class="space-y-2 text-sm text-[var(--text-2)] mt-3">
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-success flex-shrink-0 mt-0.5"></i> Completed a consulting-style simulation focused on data exploration and dashboarding.</li>
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-success flex-shrink-0 mt-0.5"></i> Practised data analysis and interpreting business data through the simulation tasks.</li>
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-success flex-shrink-0 mt-0.5"></i> Prepared findings and recommendations based on the assigned simulation tasks.</li>
-            </ul>
-          </article>
-
-          <!-- Tata -->
-          <article class="card p-7 reveal-right" style="--delay:0.1s">
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-              <div class="flex items-center gap-4">
-                <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-display font-bold text-lg" style="background:linear-gradient(135deg,#7C3AED,#10B981)">T</div>
-                <div>
-                  <h3 class="font-display font-semibold text-lg">Data Visualisation Job Simulation</h3>
-                  <p class="text-sm text-[var(--text-2)]">Tata Group · Forage · Virtual</p>
-                </div>
-              </div>
-              <span class="text-xs font-semibold text-brand-purple px-3 py-1 rounded-full" style="background:rgba(124,58,237,0.1)">Apr 2026</span>
-            </div>
-            <ul class="space-y-2 text-sm text-[var(--text-2)] mt-3">
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-success flex-shrink-0 mt-0.5"></i> Worked through data visualisation tasks as part of the virtual job simulation.</li>
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-success flex-shrink-0 mt-0.5"></i> Practised presenting data insights in a clear visual format.</li>
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-success flex-shrink-0 mt-0.5"></i> Summarised insights and recommendations from the assigned tasks.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
+<section id="projects">
+<div class="c"><div class="pill">Projects</div><h2>Selected <span class="grad">work</span></h2><p class="lead">Academic projects showcasing my skills in web development, database management, and data analytics. Move your mouse over a card.</p></div>
+<div id="proj"></div>
 </section>
 
-<!-- ===== Achievements ===== -->
-<section class="py-20 sm:py-28" style="background:var(--bg-2)">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6">
-    <div class="text-center max-w-2xl mx-auto reveal">
-      <div class="pill mb-5"><i data-lucide="trophy" class="w-3.5 h-3.5"></i> Achievements</div>
-      <h2 class="font-display font-bold text-[clamp(30px,4vw,44px)] tracking-tight leading-tight">
-        Milestones I'm <span class="gradient-text">proud of</span>
-      </h2>
-    </div>
-
-    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <div class="card p-6 text-center reveal-zoom" style="--delay:0s">
-        <div class="text-4xl mb-3">🏆</div>
-        <h3 class="font-display font-semibold text-base">Academic Progress</h3>
-        <p class="text-xs text-[var(--text-2)] mt-2 leading-relaxed">Maintained an 8.7 CGPA through Semester IV of the BCA programme.</p>
-      </div>
-      <div class="card p-6 text-center reveal-zoom" style="--delay:0.1s">
-        <div class="text-4xl mb-3">📊</div>
-        <h3 class="font-display font-semibold text-base">Built Excel Dashboard</h3>
-        <p class="text-xs text-[var(--text-2)] mt-2 leading-relaxed">Created an Excel dashboard comparing restaurant-related data using Pivot Tables, charts, and slicers.</p>
-      </div>
-      <div class="card p-6 text-center reveal-zoom" style="--delay:0.2s">
-        <div class="text-4xl mb-3">💻</div>
-        <h3 class="font-display font-semibold text-base">Academic Projects</h3>
-        <p class="text-xs text-[var(--text-2)] mt-2 leading-relaxed">Delivered multiple projects across web, data, and software domains.</p>
-      </div>
-      <div class="card p-6 text-center reveal-zoom" style="--delay:0.3s">
-        <div class="text-4xl mb-3">📜</div>
-        <h3 class="font-display font-semibold text-base">Industry Certifications</h3>
-        <p class="text-xs text-[var(--text-2)] mt-2 leading-relaxed">Completed job simulations, an Excel course, an IoT workshop, and typewriting certification.</p>
-      </div>
-    </div>
-  </div>
+<section id="contact">
+<div class="envs"><div class="env"></div></div>
+<div class="wrap" style="align-items:start">
+<div>
+<div class="pill">Contact</div>
+<h2>Let’s build something <span class="grad">together</span>.</h2>
+<p style="color:var(--mute)">I’m interested in internship and entry-level opportunities related to web development, software, and data analytics. Whether you’re a recruiter, founder, or fellow builder, I’d love to hear from you.</p>
+<a class="btn glow" style="margin-top:12px" href="./com_resume.pdf" download>⬇ Download Resume</a>
+</div>
+<div class="cl">
+<a href="mailto:fousiyafathimaf03@gmail.com"><div class="ico" style="background:linear-gradient(135deg,var(--v),var(--c));margin:0">✉</div><div><small>Email</small>fousiyafathimaf03@gmail.com</div></a>
+<a href="https://github.com/FousiyaFathima" target="_blank" rel="noopener"><div class="ico" style="background:linear-gradient(135deg,var(--v),var(--p));margin:0">⌥</div><div><small>GitHub</small>github.com/FousiyaFathima</div></a>
+<a href="https://www.linkedin.com/in/f-fousiya-fathima/" target="_blank" rel="noopener"><div class="ico" style="background:linear-gradient(135deg,var(--g),var(--c));margin:0">in</div><div><small>LinkedIn</small>linkedin.com/in/f-fousiya-fathima</div></a>
+<a href="./com_resume.pdf" target="_blank" rel="noopener"><div class="ico" style="background:linear-gradient(135deg,var(--p),var(--v));margin:0">📄</div><div><small>My Resume</small>View / Download Resume</div></a>
+</div></div>
 </section>
-
-<!-- ===== Projects ===== -->
-<section id="projects" class="py-20 sm:py-28">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6">
-    <div class="text-center max-w-2xl mx-auto reveal">
-      <div class="pill mb-5"><i data-lucide="folder-git-2" class="w-3.5 h-3.5"></i> Projects</div>
-      <h2 class="font-display font-bold text-[clamp(30px,4vw,44px)] tracking-tight leading-tight">Selected <span class="gradient-text">work</span></h2>
-      <p class="mt-4 text-[var(--text-2)]">Academic projects I have worked on while developing my technical skills.</p>
-    </div>
-
-    <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <article class="card overflow-hidden project-card reveal-zoom" style="--delay:0s">
-        <div class="overflow-hidden">
-          <div class="project-img" style="background-image:url('bakebox1.png')"></div>
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="text-[11px] font-semibold text-brand-purple px-2.5 py-1 rounded-full" style="background:rgba(124,58,237,0.1)">Full Stack</span>
-            <span class="text-[11px] font-semibold text-brand-blue px-2.5 py-1 rounded-full" style="background:rgba(37,99,235,0.1)">Academic Project</span>
-          </div>
-          <h3 class="font-display font-semibold text-lg">BakeBox — Homemade Bakery Marketplace</h3>
-          <p class="text-sm text-[var(--text-2)] mt-2 leading-relaxed">Academic full-stack project using React, Node.js, Express and PostgreSQL to build a marketplace for customers and home-based bakery sellers.</p>
-          <div class="mt-5 flex items-center gap-4 text-sm">
-            <span class="inline-flex items-center gap-1.5 font-semibold text-[var(--text-2)]"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Academic Project</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="card overflow-hidden project-card reveal-zoom" style="--delay:0.1s">
-        <div class="overflow-hidden">
-          <div class="project-img" style="background-image:url('swiggyVSzomato.png')"></div>
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="text-[11px] font-semibold text-brand-success px-2.5 py-1 rounded-full" style="background:rgba(16,185,129,0.1)">Data Analytics</span>
-            <span class="text-[11px] font-semibold text-brand-blue px-2.5 py-1 rounded-full" style="background:rgba(37,99,235,0.1)">Excel</span>
-          </div>
-          <h3 class="font-display font-semibold text-lg">Swiggy vs Zomato Analytics Dashboard</h3>
-          <p class="text-sm text-[var(--text-2)] mt-2 leading-relaxed">Excel dashboard project comparing restaurant-related data using Pivot Tables, charts and slicers to explore and present insights.</p>
-          <div class="mt-5 flex items-center gap-4 text-sm">
-            <span class="inline-flex items-center gap-1.5 font-semibold text-[var(--text-2)]"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Academic Project</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="card overflow-hidden project-card reveal-zoom" style="--delay:0.2s">
-        <div class="overflow-hidden">
-          <div class="project-img" style="background-image:url('readora.png')"></div>
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="text-[11px] font-semibold text-brand-purple px-2.5 py-1 rounded-full" style="background:rgba(124,58,237,0.1)">Web Development</span>
-            <span class="text-[11px] font-semibold text-brand-blue px-2.5 py-1 rounded-full" style="background:rgba(37,99,235,0.1)">PHP · MySQL</span>
-          </div>
-          <h3 class="font-display font-semibold text-lg">Online Book Store</h3>
-          <p class="text-sm text-[var(--text-2)] mt-2 leading-relaxed">Academic website project using HTML, CSS, JavaScript, PHP and MySQL to practise web development and database integration.</p>
-          <div class="mt-5 flex items-center gap-4 text-sm">
-            <span class="inline-flex items-center gap-1.5 font-semibold text-[var(--text-2)]"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Academic Project</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="card overflow-hidden project-card reveal-zoom" style="--delay:0s">
-        <div class="overflow-hidden">
-          <div class="project-img" style="background-image:url('library.png')"></div>
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="text-[11px] font-semibold text-brand-success px-2.5 py-1 rounded-full" style="background:rgba(16,185,129,0.1)">Database</span>
-            <span class="text-[11px] font-semibold text-brand-blue px-2.5 py-1 rounded-full" style="background:rgba(37,99,235,0.1)">PostgreSQL</span>
-          </div>
-          <h3 class="font-display font-semibold text-lg">Library Management System</h3>
-          <p class="text-sm text-[var(--text-2)] mt-2 leading-relaxed">Academic database project using PostgreSQL to practise CRUD operations and organise library-related information.</p>
-          <div class="mt-5 flex items-center gap-4 text-sm">
-            <span class="inline-flex items-center gap-1.5 font-semibold text-[var(--text-2)]"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Academic Project</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="card overflow-hidden project-card reveal-zoom" style="--delay:0.1s">
-        <div class="overflow-hidden">
-          <div class="project-img" style="background-image:url('soap.png')"></div>
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="text-[11px] font-semibold text-brand-purple px-2.5 py-1 rounded-full" style="background:rgba(124,58,237,0.1)">Web Development</span>
-            <span class="text-[11px] font-semibold text-brand-blue px-2.5 py-1 rounded-full" style="background:rgba(37,99,235,0.1)">PHP · MySQL</span>
-          </div>
-          <h3 class="font-display font-semibold text-lg">Soap Business Website</h3>
-          <p class="text-sm text-[var(--text-2)] mt-2 leading-relaxed">Academic business website project using HTML, CSS, JavaScript, PHP and MySQL to practise website design and database connectivity.</p>
-          <div class="mt-5 flex items-center gap-4 text-sm">
-            <span class="inline-flex items-center gap-1.5 font-semibold text-[var(--text-2)]"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Academic Project</span>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Contact ===== -->
-<section id="contact" class="py-20 sm:py-28" style="background:var(--bg-2)">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6">
-    <div class="grid lg:grid-cols-12 gap-12">
-      <!-- Left -->
-      <div class="lg:col-span-5 reveal-left">
-        <div class="pill mb-5"><i data-lucide="send" class="w-3.5 h-3.5"></i> Contact</div>
-        <h2 class="font-display font-bold text-[clamp(30px,4vw,44px)] tracking-tight leading-tight">
-          Let's build something <span class="gradient-text">together</span>.
-        </h2>
-        <p class="mt-4 text-[var(--text-2)] leading-relaxed">
-          I'm interested in internship and entry-level opportunities related to web development, software, and data analytics.
-          Whether you're a recruiter, founder, or fellow builder — I'd love to hear from you.
-        </p>
-
-        <div class="mt-8 space-y-3">
-          <a href="mailto:fousiyafathima550@gmail.com" class="card p-4 flex items-center gap-4 group">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#2563EB,#7C3AED)">
-              <i data-lucide="mail" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <div class="text-xs text-[var(--text-2)] font-medium">Email</div>
-              <div class="text-sm font-semibold">fousiyafathima550@gmail.com</div>
-            </div>
-            <i data-lucide="arrow-up-right" class="w-4 h-4 ml-auto text-[var(--text-2)] group-hover:text-brand-blue transition"></i>
-          </a>
-          <a href="https://github.com/FousiyaFathima" target="_blank" rel="noopener" class="card p-4 flex items-center gap-4 group">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#7C3AED,#10B981)">
-              <i data-lucide="github" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <div class="text-xs text-[var(--text-2)] font-medium">GitHub</div>
-              <div class="text-sm font-semibold">github.com/FousiyaFathima</div>
-            </div>
-            <i data-lucide="arrow-up-right" class="w-4 h-4 ml-auto text-[var(--text-2)] group-hover:text-brand-blue transition"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/f-fousiya-fathima/" target="_blank" rel="noopener" class="card p-4 flex items-center gap-4 group">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#10B981,#2563EB)">
-              <i data-lucide="linkedin" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <div class="text-xs text-[var(--text-2)] font-medium">LinkedIn</div>
-              <div class="text-sm font-semibold">linkedin.com/in/f-fousiya-fathima</div>
-            </div>
-            <i data-lucide="arrow-up-right" class="w-4 h-4 ml-auto text-[var(--text-2)] group-hover:text-brand-blue transition"></i>
-          </a>
-        </div>
-
-        <a href="resume.pdf" download class="mt-6 btn-primary inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold">
-          <i data-lucide="download" class="w-4 h-4"></i> Download Resume
-        </a>
-      </div>
-
-      <!-- Resume panel (right side) -->
-      <div class="lg:col-span-7 reveal-right flex items-center">
-        <div class="card w-full p-8 sm:p-10 text-center">
-          <div class="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-white mb-5" style="background:linear-gradient(135deg,#D977A8,#8B5CF6)">
-            <i data-lucide="file-text" class="w-8 h-8"></i>
-          </div>
-          <h3 class="font-display font-semibold text-2xl">My Resume</h3>
-          <p class="text-sm text-[var(--text-2)] mt-3 max-w-md mx-auto leading-relaxed">View my education, technical skills, academic projects, and virtual job simulations in one place.</p>
-          <a href="resume.pdf" target="_blank" rel="noopener" class="mt-6 btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold">
-            <i data-lucide="download" class="w-4 h-4"></i> View / Download Resume
-          </a>
-          <p class="text-xs text-[var(--text-2)] mt-3">Place your PDF file in the main portfolio folder as <strong>resume.pdf</strong>.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Footer ===== -->
-<footer class="py-10 border-t" style="border-color:var(--border)">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <div class="flex items-center gap-2.5">
-      <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-display font-bold text-xs" style="background:linear-gradient(135deg,#2563EB,#7C3AED)">FF</div>
-      <span class="text-sm font-semibold">Fousiya Fathima</span>
-    </div>
-    <p class="text-xs text-[var(--text-2)] text-center">© 2026 Fousiya Fathima · Made with HTML, CSS & JavaScript</p>
-    <div class="flex items-center gap-2">
-      <a href="https://github.com/FousiyaFathima" target="_blank" rel="noopener" aria-label="GitHub" class="w-9 h-9 rounded-lg flex items-center justify-center border hover:text-brand-blue hover:border-brand-blue transition" style="border-color:var(--border)">
-        <i data-lucide="github" class="w-4 h-4"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/f-fousiya-fathima/" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-9 h-9 rounded-lg flex items-center justify-center border hover:text-brand-blue hover:border-brand-blue transition" style="border-color:var(--border)">
-        <i data-lucide="linkedin" class="w-4 h-4"></i>
-      </a>
-      <a href="mailto:fousiyafathima550@gmail.com" aria-label="Email" class="w-9 h-9 rounded-lg flex items-center justify-center border hover:text-brand-blue hover:border-brand-blue transition" style="border-color:var(--border)">
-        <i data-lucide="mail" class="w-4 h-4"></i>
-      </a>
-    </div>
-  </div>
-</footer>
+<footer><span><b>FF</b> Fousiya Fathima</span><span>© 2026 Fousiya Fathima</span><span><a href="https://github.com/FousiyaFathima" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/f-fousiya-fathima/" target="_blank" rel="noopener">LinkedIn</a> · <a href="mailto:fousiyafathimaf03@gmail.com">Email</a></span></footer>
+<div id="lb" role="dialog" aria-label="Certificate preview"><button class="lbx" aria-label="Close">✕</button><div><img alt=""><p></p></div></div>
 
 <script>
-  // Init Lucide
-  lucide.createIcons();
+const $=s=>document.querySelector(s),rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const IMG=(s,a)=>`<img src="${s}" alt="${a}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:this.alt}))">`;
+const tags=a=>'<div class="tags">'+a.map(t=>`<span class="tag ${t[1]}">${t[0]}</span>`).join('')+'</div>';
+const mouse={x:0,y:0};addEventListener('pointermove',e=>{mouse.x=e.clientX/innerWidth*2-1;mouse.y=e.clientY/innerHeight*2-1});
 
-  // ===== Theme toggle =====
-  const root = document.documentElement;
-  const themeBtn = document.getElementById('theme-toggle');
-  const stored = localStorage.getItem('theme');
-  if (stored === 'dark') root.classList.add('dark');
-  else if (stored === 'light') root.classList.remove('dark');
-  // Default to the pleasant light theme unless the visitor previously selected dark mode.
+/* ---------- content data ---------- */
+const GRAD=['linear-gradient(135deg,#2563EB,#7C3AED)','linear-gradient(135deg,#7C3AED,#10B981)','linear-gradient(135deg,#10B981,#2563EB)'];
+$('#mq').innerHTML=[0,1].map(()=>['Data Analyst','Frontend Developer','Software Developer','Power BI (Learning)','Python (Basic)','SQL','React'].map(t=>`<span>${t}</span><span class="grad">✦</span>`).join('')).join('');
+$('#roles').innerHTML=[['📊','Data Analyst','Exploring data analysis and visualisation using Excel and SQL, with Power BI as a learning area.'],['🧩','Frontend Developer','Building web interfaces using HTML, CSS, JavaScript and React through project practice.'],['⌨','Software Developer','Developing programming and database skills using Java, C, PHP, SQL and project-based practice.'],['✨','Always Learning','A quick learner who enjoys practising new technologies and improving projects through feedback.']].map((r,i)=>`<div class="card tilt rv"><div class="ico" style="background:${GRAD[i%3]}">${r[0]}</div><h3>${r[1]}</h3><p>${r[2]}</p></div>`).join('');
+$('#skg').innerHTML=[['🗄','Data &amp; Analytics',['Microsoft Excel','SQL','Pivot Tables &amp; Charts','Data Visualization','Power BI (Learning)']],['🖥','Frontend Development',['HTML5','CSS3','JavaScript','React.js','GitHub']],['🧱','Programming &amp; Tools',['Java','C','PHP','Python (Basic)','MySQL','PostgreSQL','VS Code','NetBeans']]].map((s,i)=>`<div class="card tilt rv"><div class="ico" style="background:${GRAD[i]}">${s[0]}</div><h3>${s[1]}</h3><div class="chips">${s[2].map(c=>`<span class="chip">${c}</span>`).join('')}</div></div>`).join('');
+$('#edu').innerHTML=[['Bachelor of Computer Applications (BCA)','2024 – 2027','t2','Third Year · CGPA (up to Semester IV): <b>8.7 / 10</b><br>Stella Maris College (Autonomous), Chennai · Expected graduation: April 2027'],['Higher Secondary (Class 12)','2023 – 2024','t1','S.J.N.S. Jain Matriculation Higher Secondary School · Percentage: <b>92%</b>'],['Secondary School (Class 10 / SSLC)','2021 – 2022','t3','Rex Matriculation School · Percentage: <b>83%</b>']].map(e=>`<div class="ev rv"><div class="card tilt"><div class="row"><h3>${e[0]}</h3><span class="tag ${e[2]}">${e[1]}</span></div><p style="margin-top:8px">${e[3]}</p></div></div>`).join('');
+const C=[
+['Certifications &amp; Job Simulations','Professional learning and virtual job simulation credentials.',[
+['certificates/tata.png','Tata Data Visualisation Job Simulation Certificate','Job Simulation','t1','🏅','Tata — Data Visualisation Job Simulation','Tata · Forage','April 2026'],
+['certificates/deloitte.png','Deloitte Australia Data Analytics Job Simulation Certificate','Job Simulation','t2','🏅','Deloitte Australia — Data Analytics Job Simulation','Deloitte · Forage','May 2026'],
+['certificates/infosys.png','Microsoft Excel 2016 Beginner Certificate','Course','t3','📗','Microsoft Excel 2016 — Beginner','Infosys Springboard','May 2026']]],
+['Training','Employability and skills development.',[
+['certificates/magicbus.jpg','AI and Life and Employability Skills Certificate','Training','t1','👥','AI and Life and Employability Skills','Magic Bus India Foundation · Supported by Infosys Foundation','July 2026']]],
+['Workshops &amp; Academic Sessions','Workshops and academic sessions attended during my studies.',[
+['certificates/velgrow.jpg','IoT Workshop Certificate','Workshop','t2','📡','Internet of Things (IoT) Workshop','Stella Maris College &amp; Velgrow Academy','February 2026'],
+['certificates/computer.jpg','Information Meets Quantum Physics Academic Session Certificate','Academic Session','t2','⚛','Information Meets Quantum Physics — From Shannon’s Bit to the Quantum Qubit','Kristu Jayanti (Deemed to be University) · Department of Computational Studies and Department of Physical Sciences','August 2026'],
+['certificates/be10X.jpg','AI Tools and Claude Workshop Certificate','Workshop','t1','✨','AI Tools &amp; Claude Workshop','be10x','August 2026']]]];
+/* ---------- certificate vault ---------- */
+const ALL=C.flatMap(g=>g[2]);
+$('#vgrid').innerHTML=ALL.map(c=>`<article class="card vc"><button class="shot" data-src="${c[0]}" data-alt="${c[1]}" aria-label="Open ${c[6]} certificate" style="cursor:zoom-in">${IMG(c[0],c[1]).replace(' loading="lazy"','')}</button><div style="display:flex;justify-content:space-between;align-items:center">${tags([[c[2],c[3]]])}<span style="font-size:22px">${c[4]}</span></div><h4>${c[5]}</h4><p>${c[6]}</p><p style="font-size:13px;margin-top:8px">${c[7]}</p><button class="more" data-src="${c[0]}" data-alt="${c[1]}">View Certificate 🔍</button></article>`).join('');
+const vault=$('#vault'),vslot=$('#vslot'),vcs=[...document.querySelectorAll('.vc')];let vopen=false;
+function stackVault(){if(vopen)return;const s=vslot.getBoundingClientRect(),sx=s.left+s.width/2,sy=s.top+s.height*.6,n=vcs.length;
+vcs.forEach((c,i)=>{c.style.transition='none';c.style.transform='none';const r=c.getBoundingClientRect(),m=i-(n-1)/2;
+c.style.transform=`translate(${sx-(r.left+r.width/2)+m*28}px,${sy-(r.top+r.height/2)-i*3}px) scale(.4) rotateX(30deg) rotateY(-25deg) rotate(${m*4}deg)`;void c.offsetWidth;c.style.transition=''})}
+function openVault(){if(vopen)return;vopen=true;vault.classList.add('in');
+setTimeout(()=>{vault.classList.add('open');vcs.forEach((c,i)=>{c.classList.add('fly');c.style.transitionDelay=(.45+i*.2)+'s';c.style.transform=''});
+setTimeout(()=>vcs.forEach(c=>{c.classList.remove('fly');c.style.transitionDelay='';c.classList.add('done')}),(.45+vcs.length*.2+1.4)*1000)},rm?0:900)}
+stackVault();addEventListener('resize',stackVault);addEventListener('load',stackVault);
+const vio=new IntersectionObserver(es=>{if(es[0].isIntersecting){vio.disconnect();openVault()}},{threshold:.45});vio.observe(vslot);
 
-  themeBtn.addEventListener('click', () => {
-    root.classList.toggle('dark');
-    localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
-    lucide.createIcons();
-  });
+$('#exp').innerHTML=[['D','Data Analytics Job Simulation','Deloitte Australia · Forage · Virtual','May 2026','t2',GRAD[0],['Completed a consulting-style simulation focused on data exploration and dashboarding.','Practised data analysis and interpreting business data through the simulation tasks.','Prepared findings and recommendations based on the assigned simulation tasks.']],['T','Data Visualisation Job Simulation','Tata Group · Forage · Virtual','Apr 2026','t1',GRAD[1],['Worked through data visualisation tasks as part of the virtual job simulation.','Practised presenting data insights in a clear visual format.','Summarised insights and recommendations from the assigned tasks.']]].map(e=>`<article class="card tilt rv"><div style="display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap"><div style="display:flex;gap:14px;align-items:center"><div class="dot" style="background:${e[5]}">${e[0]}</div><div><h3 style="margin:0">${e[1]}</h3><p>${e[2]}</p></div></div>${tags([[e[3],e[4]]])}</div><ul class="ck">${e[6].map(l=>`<li>${l}</li>`).join('')}</ul></article>`).join('');
+$('#ach').innerHTML=[['🏆','Academic Progress','Maintained an 8.7 CGPA through Semester IV of the BCA programme.'],['📊','Built Excel Dashboard','Created an Excel dashboard comparing restaurant-related data using Pivot Tables, charts, and slicers.'],['💻','Academic Projects','Delivered multiple projects across web, data, and software domains.'],['📜','Industry Certifications','Completed job simulations, an Excel course, an IoT workshop, and typewriting certification.']].map(a=>`<div class="card tilt rv" style="text-align:center"><div style="font-size:42px">${a[0]}</div><h3>${a[1]}</h3><p style="font-size:14px">${a[2]}</p></div>`).join('');
+const PJ=[['Web Development &amp; Applications','Websites and applications built using frontend, backend, and database technologies.',[
+['bakebox1.png','BakeBox','BakeBox — Homemade Bakery Marketplace',[['Full Stack','t1'],['Academic Project','t2']],'A full-stack academic project using React, Node.js, Express and PostgreSQL to build a marketplace connecting customers with home-based bakery sellers.','Academic Project'],
+['readora.png','Redora','Redora — Online Bookstore',[['Web Development','t1'],['PHP · MySQL','t2']],'An academic bookstore website developed to practise web design, frontend development, and database integration using HTML, CSS, JavaScript, PHP and MySQL.','Academic Project'],
+['soap.png','Soap Business Website','Soap Business Website',[['Web Development','t1'],['PHP · MySQL','t2']],'An academic website project using HTML, CSS, JavaScript, PHP and MySQL to practise website design and database connectivity.','Academic Project']]],
+['Data Analytics &amp; Visualization','Projects focused on data exploration, dashboard reporting, SQL queries, and database management.',[
+['swiggyVSzomato.png','Swiggy vs Zomato dashboard','Swiggy vs Zomato Analytics Dashboard',[['Data Analytics','t3'],['Excel','t2']],'An Excel dashboard comparing restaurant-related data using Pivot Tables, charts and slicers to explore trends and present insights.','Analytics Project'],
+['library.png','Online Library System','Online Library System',[['SQL &amp; Database','t3'],['PostgreSQL','t2']],'An academic database project using PostgreSQL and SQL queries to organise library information and practise CRUD operations.','Database Project']]]];
+$('#proj').innerHTML=PJ.map((g,i)=>`<div class="grp rv"><h3><span class="grad">0${i+1}.</span> ${g[0]}</h3><p>${g[1]}</p></div><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr))">`+g[2].map(p=>`<article class="card tilt rv"><div class="shot" style="height:230px">${IMG(p[0],p[1])}</div>${tags(p[3])}<h4 style="margin-top:12px;font-size:20px">${p[2]}</h4><p style="margin-top:6px">${p[4]}</p><div style="display:flex;justify-content:space-between;margin-top:auto;padding-top:14px;font-weight:500"><span style="color:var(--mute)">🎓 ${p[5]}</span><a href="https://github.com/FousiyaFathima" target="_blank" rel="noopener" style="color:var(--c)">GitHub ↗</a></div></article>`).join('')+'</div>').join('');
 
-  // ===== Mobile menu =====
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
-
-  // ===== Typing animation =====
-  const roles = ['Data Analyst', 'Frontend Developer', 'Software Developer'];
-  const typedEl = document.getElementById('typed');
-  let roleIdx = 0, charIdx = 0, deleting = false;
-
-  function type(){
-    const current = roles[roleIdx];
-    if (!deleting){
-      typedEl.textContent = current.slice(0, ++charIdx);
-      if (charIdx === current.length){
-        deleting = true;
-        return setTimeout(type, 1600);
-      }
-    } else {
-      typedEl.textContent = current.slice(0, --charIdx);
-      if (charIdx === 0){
-        deleting = false;
-        roleIdx = (roleIdx + 1) % roles.length;
-      }
-    }
-    setTimeout(type, deleting ? 50 : 90);
-  }
-  type();
-
-  // ===== Scroll reveal =====
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting){
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom').forEach(el => io.observe(el));
-
-  // ===== Counter animation =====
-  const counters = document.querySelectorAll('[data-count]');
-  const cIO = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting){
-        const el = e.target;
-        const target = parseInt(el.dataset.count, 10);
-        const duration = 1400;
-        const start = performance.now();
-        const tick = (now) => {
-          const p = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(eased * target) + (p === 1 ? '+' : '');
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-        cIO.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(c => cIO.observe(c));
-
-  // ===== Nav shadow on scroll =====
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) nav.classList.add('shadow-lg');
-    else nav.classList.remove('shadow-lg');
-  });
+/* ---------- behaviour ---------- */
+$('#theme').onclick=()=>{document.documentElement.classList.toggle('light');try{localStorage.setItem('theme',document.documentElement.classList.contains('light')?'light':'dark')}catch(e){}};
+try{if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light')}catch(e){}
+const lb=$('#lb');document.addEventListener('click',e=>{const b=e.target.closest('[data-src]');if(b){lb.querySelector('img').src=b.dataset.src;lb.querySelector('p').textContent=b.dataset.alt;lb.classList.add('on')}else if(lb.classList.contains('on'))lb.classList.remove('on')});
+addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+lb.querySelector('img').onerror=()=>{lb.classList.remove('on')};
+/* typing */
+const roles=['Software Developer','Data Analyst','Web Developer'],rEl=$('#role');let ri=0,ci=0,del=false;
+(function t(){const w=roles[ri];if(rm){rEl.textContent=roles.join(' | ');return}rEl.textContent=w.slice(0,ci);if(!del&&ci===w.length){del=true;return setTimeout(t,1400)}if(del&&ci===0){del=false;ri=(ri+1)%roles.length}ci+=del?-1:1;setTimeout(t,del?40:80)})();
+/* counters + reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');io.unobserve(e.target)}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((e,i)=>io.observe(e));
+document.querySelectorAll('[data-count]').forEach(el=>{const n=+el.dataset.count,s=performance.now();(function f(now){const p=Math.min((now-s)/1400,1);el.textContent=Math.round((1-Math.pow(1-p,3))*n)+(p===1?'+':'');if(p<1&&!rm)requestAnimationFrame(f);else el.textContent=n+'+'})(s)});
+/* tilt */
+document.querySelectorAll('.tilt').forEach(c=>{c.addEventListener('pointermove',e=>{if(rm)return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%');c.style.transform=`perspective(800px) rotateX(${(.5-y)*10}deg) rotateY(${(x-.5)*10}deg)`});c.addEventListener('pointerleave',()=>c.style.transform='')});
+/* about phone */
+const ps=$('#pscene'),pt=$('#ptilt');
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){ps.classList.add('in');o.disconnect()}},{threshold:.25}).observe(ps);
+ps.addEventListener('pointermove',e=>{if(rm||e.pointerType==='touch')return;const r=ps.getBoundingClientRect();pt.style.setProperty('--ry',((e.clientX-r.left)/r.width-.5)*26+'deg');pt.style.setProperty('--rx',-((e.clientY-r.top)/r.height-.5)*18+'deg')});
+ps.addEventListener('pointerleave',()=>{pt.style.setProperty('--ry','0deg');pt.style.setProperty('--rx','0deg')});
+/* particles */
+const fx=$('#fx'),x2=fx.getContext('2d');let P=[];
+function fit(){fx.width=innerWidth;fx.height=innerHeight;P=Array.from({length:Math.min(80,innerWidth/14|0)},()=>({x:Math.random()*fx.width,y:Math.random()*fx.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3}))}
+fit();addEventListener('resize',fit);
+(function l(){x2.clearRect(0,0,fx.width,fx.height);for(const a of P){if(!rm){a.x=(a.x+a.vx+fx.width)%fx.width;a.y=(a.y+a.vy+fx.height)%fx.height}x2.fillStyle='rgba(150,140,230,.7)';x2.fillRect(a.x,a.y,2,2);for(const b of P){const d=Math.hypot(a.x-b.x,a.y-b.y);if(d<110){x2.strokeStyle='rgba(139,92,246,'+.18*(1-d/110)+')';x2.beginPath();x2.moveTo(a.x,a.y);x2.lineTo(b.x,b.y);x2.stroke()}}}if(!rm)requestAnimationFrame(l)})();
+/* skill constellation */
+const CAT=[['Technical skill','#22d3ee'],['Analytical & problem-solving skill','#a78bfa'],['Soft skill','#f472b6']];
+const DESC={SQL:'MySQL and PostgreSQL queries.',Excel:'Pivot tables, charts and slicers.',Python:'Basic level.','Power BI':'Currently learning.',Java:'Core programming for academic projects.',React:'Building frontend web interfaces.',JavaScript:'Interactive web pages.'};
+const LAY={
+D:{W:920,H:700,sun:200,max:1,nodes:[["Python",96,0,309,549],["Java",86,0,168,557],["JavaScript",106,0,78,464],["React",92,0,161,360],["SQL",82,0,82,266],["Excel",90,0,193,221],["Power BI",98,0,196,93],["Analytical Thinking",120,1,338,72],["Problem Solving",114,1,470,145],["Critical Thinking",112,1,615,166],["Logical Reasoning",114,1,738,85],["Decision Making",110,1,761,235],["Communication",114,2,851,366],["Teamwork",100,2,711,384],["Adaptability",110,2,762,514],["Time Management",114,2,668,626],["Creativity",98,2,544,561],["Leadership",102,2,434,637]],edges:[[-1,0],[-1,8],[-1,16],[0,1],[0,17],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[8,7],[8,9],[9,10],[10,11],[11,13],[13,12],[14,13],[15,14],[16,15],[16,17]]},
+M:{W:400,H:1060,sun:190,max:1.25,nodes:[["Python",96,0,104,1000],["Java",86,0,60,887],["JavaScript",106,0,104,769],["React",92,0,58,649],["SQL",82,0,53,427],["Excel",90,0,57,311],["Power BI",98,0,61,89],["Analytical Thinking",120,1,138,204],["Problem Solving",114,1,194,69],["Critical Thinking",112,1,332,103],["Logical Reasoning",114,1,305,243],["Decision Making",110,1,197,336],["Communication",114,2,331,384],["Teamwork",100,2,338,659],["Adaptability",110,2,241,753],["Time Management",114,2,331,863],["Creativity",98,2,334,999],["Leadership",102,2,199,912]],edges:[[-1,4],[-1,11],[-1,13],[0,17],[1,0],[2,1],[3,2],[4,3],[4,5],[5,6],[5,7],[6,8],[9,8],[10,9],[11,7],[11,10],[13,12],[13,14],[14,15],[15,16],[15,17]]}};
+const cons=$('#cons'),stage=$('#stage'),lines=$('#lines'),sunEl=stage.querySelector('.sun'),tip=$('#tip');let mode='';
+function fitCons(){const L=LAY[mode],s=Math.min(cons.clientWidth/L.W,L.max);stage.style.transform=`scale(${s})`;stage.style.left=(cons.clientWidth-L.W*s)/2+'px';cons.style.height=L.H*s+'px'}
+function buildCons(){const key=innerWidth<700?'M':'D';if(key===mode){fitCons();return}mode=key;const L=LAY[key],cx=L.W/2,cy=L.H/2;
+stage.querySelectorAll('.pn').forEach(n=>n.remove());stage.style.width=L.W+'px';stage.style.height=L.H+'px';
+Object.assign(sunEl.style,{width:L.sun+'px',height:L.sun+'px',left:cx-L.sun/2+'px',top:cy-L.sun/2+'px',margin:0});
+lines.setAttribute('viewBox',`0 0 ${L.W} ${L.H}`);
+lines.innerHTML=L.edges.map(([a,b])=>{const p=a<0?[cx,cy]:[L.nodes[a][3],L.nodes[a][4]],q=[L.nodes[b][3],L.nodes[b][4]];return `<line x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"/>`}).join('');
+L.nodes.forEach((n,i)=>{const [nm,d,c,x,y]=n,col=CAT[c][1],el=document.createElement('div');el.className='pn';el.tabIndex=0;
+el.style.cssText=`left:${x-d/2}px;top:${y-d/2}px;width:${d}px;height:${d}px;background:radial-gradient(circle at 35% 30%,#fff9,transparent 45%),${col};--glow:${col};--dur:${5+(i%5)*.9}s;--dl:${-i*.7}s`;
+el.innerHTML=`<span>${nm}</span>`;const on=()=>{tip.textContent=nm+' · '+(DESC[nm]||CAT[c][0])},off=()=>{tip.textContent='Hover a planet.'};
+el.onmouseenter=on;el.onmouseleave=off;el.onfocus=on;el.onblur=off;stage.appendChild(el)});
+fitCons()}
+buildCons();addEventListener('resize',buildCons);
+/* hero 3D */
+try{
+const box=$('#hero3d'),R=new THREE.WebGLRenderer({antialias:true,alpha:true});R.setPixelRatio(Math.min(devicePixelRatio,2));box.appendChild(R.domElement);$('#ffb').style.display='none';
+const S=new THREE.Scene(),Cm=new THREE.PerspectiveCamera(45,1,.1,100);Cm.position.z=9;
+S.add(new THREE.AmbientLight(0xffffff,.55));
+const l1=new THREE.PointLight(0x8b5cf6,2.2,40);l1.position.set(-6,4,6);S.add(l1);const l2=new THREE.PointLight(0x22d3ee,2.2,40);l2.position.set(6,-3,6);S.add(l2);
+function F(col){const m=new THREE.MeshStandardMaterial({color:col,metalness:.65,roughness:.25,emissive:col,emissiveIntensity:.12}),g=new THREE.Group();[[0,0,.55,3.2],[.6,1.32,1.5,.55],[.45,.2,1.2,.5]].forEach(a=>{const b=new THREE.Mesh(new THREE.BoxGeometry(a[2],a[3],.6),m);b.position.set(a[0],a[1],0);g.add(b)});g.position.x=-.5;return g}
+const grp=new THREE.Group(),f1=F(0x8b5cf6),f2=F(0x22d3ee);f1.position.x=-1.9;f2.position.x=.2;grp.add(f1,f2);S.add(grp);
+const wire=new THREE.Mesh(new THREE.IcosahedronGeometry(3.1,1),new THREE.MeshBasicMaterial({color:0x8b5cf6,wireframe:true,transparent:true,opacity:.2}));S.add(wire);
+const geos=[new THREE.OctahedronGeometry(.3),new THREE.TorusGeometry(.24,.08,12,24),new THREE.IcosahedronGeometry(.3),new THREE.BoxGeometry(.42,.42,.42),new THREE.CylinderGeometry(.2,.2,.45,24),new THREE.TetrahedronGeometry(.34)],cols=[0xf472b6,0x22d3ee,0xfacc15,0x34d399,0x60a5fa,0xf59e0b];
+const orb=geos.map((g,i)=>{const m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:cols[i],metalness:.4,roughness:.3,emissive:cols[i],emissiveIntensity:.25}));S.add(m);return m});
+function size(){const w=box.clientWidth,h=box.clientHeight;R.setSize(w,h,false);Cm.aspect=w/h;Cm.updateProjectionMatrix()}size();addEventListener('resize',size);
+let t=0;(function d(){if(!rm)t+=.012;grp.rotation.y+=((mouse.x*.6+Math.sin(t*.7)*.3)-grp.rotation.y)*.06;grp.rotation.x+=((mouse.y*.35)-grp.rotation.x)*.06;grp.position.y=Math.sin(t)*.15;wire.rotation.y=t*.3;wire.rotation.x=t*.2;
+orb.forEach((m,i)=>{const a=t*(.6+i*.08)+i*1.05;m.position.set(Math.cos(a)*(3.5+mouse.x*.2),Math.sin(a*1.3)*1.7,Math.sin(a)*2.2);m.rotation.x=t*1.2+i;m.rotation.y=t*.9});R.render(S,Cm);requestAnimationFrame(d)})();
+}catch(e){}
 </script>
-
 </body>
 </html>
